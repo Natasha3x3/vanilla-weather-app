@@ -11,7 +11,33 @@
 </head>
 <body>
     <div class="container">
-        
+    <div class="weather-app">
+        <form class="search-form">
+          <div class="row"> 
+            <div class="col-9">
+            <input type="search" class="form-control" id="searchBar" placeholder="Search for a city">
+            </div>
+            <div class="col-3">
+            <input type="submit" class="search-button" id="searchButtono" value="Search">
+            </div>
+            </div>
+        </form>
+        <h1>Bratislava</h1>
+        <div class="row">
+            <div class="col-6">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7JnIUoK5jsSsByCvalhtjUHcS3qk3PkTTg&usqp=CAU" class="main-icon" alt="main icon" height="50px" width="50px">
+                <span class="main-temp">20°C|F</span>
+                <div class="current-day">Friday 12:25</div> 
+                <div class="description">Sunny</div>
+            </div>
+            <div class="col-6">
+                <div class="precipitation">Precipitation: 3%</div>
+                <div class="humidity">Humidity: 68%</div>
+                <div class="precipitation">Wind speed: 8 km/h</div>
+            </div>
+        </div>
+    </div> 
+    <small><a href="https://github.com/Natasha3x3/vanilla-weather-app.git">Open-source code</a> by Nataša Pošteková</small>   
     </div>
     <script src="src/index.js"></script>
 </body>
