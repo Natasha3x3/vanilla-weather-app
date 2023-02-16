@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Inconsolata:wght@200;300;400;500;600;700;800&family=Roboto:wght@100;300;400;500&display=swap"
         rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -22,22 +23,21 @@
             <input type="search" class="form-control" id="searchBar" placeholder="Search for a city">
  
             <input type="submit" class="button search-button" id="searchButton" value="Search">
-            <input type="submit" class="button location-button" id="searchButtono" value="📍Here">
+            <input type="submit" class="button location-button" id="searchButtono" value="Here📍">
           
         </form>
-        <h1>Bratislava</h1>
+        <h1 id="city">Bratislava</h1>
         <div class="row">
             <div class="col-6">
                 <div class="d-flex current-temperature">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7JnIUoK5jsSsByCvalhtjUHcS3qk3PkTTg&usqp=CAU" class="main-icon" id="current-icon" alt="Clear" height="50px" width="50px">
-                <span class="main-temp">12</span><span class="main-units">°C | <a href="#" id="fahrenheit">°F</a></span>
+                <span class="main-temp" id="mainTemp">12</span><span class="main-units">°C | <a href="#" id="fahrenheit">°F</a></span>
                 </div>
                 <div class="current-day-time">Friday 12:25</div> 
-                <div class="description">Sunny</div>
+                <div class="description" id="description"></div>
             </div>
             <div class="col-6 col-6-2">
                <div class="prec-hum-wind">
-                <div class="weather-elements precipitation" id="precipitation">Precipitation: 3%</div>
                 <div class="weather-elements humidity" id="humidity">Humidity: 68%</div>
                 <div class="weather-elements precipitation" id="wind">Wind speed: 8 km/h</div>
                 </div>
