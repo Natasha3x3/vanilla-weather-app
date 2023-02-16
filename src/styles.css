@@ -43,7 +43,7 @@ border-radius: 5px;
 .main-units {
     font-size: 18px;
 }
-.current-day-time,
+.current-date,
 .description,
 .prec-hum-wind {
     opacity: 0.8;
