@@ -28,12 +28,14 @@
         <h1>Bratislava</h1>
         <div class="row">
             <div class="col-6">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7JnIUoK5jsSsByCvalhtjUHcS3qk3PkTTg&usqp=CAU" class="main-icon" alt="main icon" height="50px" width="50px">
-                <span class="main-temp">20°C|F</span>
-                <div class="current-day">Friday 12:25</div> 
+                <div class="d-flex current-temperature">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7JnIUoK5jsSsByCvalhtjUHcS3qk3PkTTg&usqp=CAU" class="main-icon" id="current-icon" alt="Clear" height="50px" width="50px">
+                <span class="main-temp">12</span><span class="main-units">°C | <a href="#" id="fahrenheit">°F</a></span>
+                </div>
+                <div class="current-day-time">Friday 12:25</div> 
                 <div class="description">Sunny</div>
             </div>
-            <div class="col-6">
+            <div class="col-6 col-6-2">
                <div class="prec-hum-wind">
                 <div class="weather-elements precipitation" id="precipitation">Precipitation: 3%</div>
                 <div class="weather-elements humidity" id="humidity">Humidity: 68%</div>
