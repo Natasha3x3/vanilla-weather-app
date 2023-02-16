@@ -1,0 +1,30 @@
+
+
+.wrapper {
+    margin: 100px auto;
+    max-width: 500px;
+}
+.weather-app {
+    border: 1px rgba(128, 128, 128, 0.619) solid;
+    border-radius: 5px;
+    padding: 15px;
+}
+form {
+    display:block;
+}
+.button {
+display: inline-block;
+margin-left: 10px;
+padding: 4px 5px;
+border: 1px solid gray;
+border-radius: 5px;
+
+}
+.search-button {
+    padding: 4px 10px;
+}
+
+.form-control {
+    max-width: 300px;
+    display: inline-block;
+}

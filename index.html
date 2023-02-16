@@ -11,16 +11,14 @@
 </head>
 <body>
     <div class="container">
+        <div class="wrapper">
     <div class="weather-app">
         <form class="search-form">
-          <div class="row"> 
-            <div class="col-9">
             <input type="search" class="form-control" id="searchBar" placeholder="Search for a city">
-            </div>
-            <div class="col-3">
-            <input type="submit" class="search-button" id="searchButtono" value="Search">
-            </div>
-            </div>
+ 
+            <input type="submit" class="button search-button" id="searchButton" value="Search">
+            <input type="submit" class="button location-button" id="searchButtono" value="📍Here">
+          
         </form>
         <h1>Bratislava</h1>
         <div class="row">
@@ -40,6 +38,7 @@
         </div>
     </div> 
     <small><a href="https://github.com/Natasha3x3/vanilla-weather-app.git">Open-source code</a> by Nataša Pošteková</small>   
+    </div>
     </div>
     <script src="src/index.js"></script>
 </body>
