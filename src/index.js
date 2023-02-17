@@ -16,7 +16,7 @@ function formatDate(timestamp) {
 
 function displayTemperature(response) {
 let currentTemperature = document.querySelector("#mainTemp");
-currentTemperature.innerHTML =Math.round(response.data.main.temp);
+currentTemperature.innerHTML =Math.round(celsiousTemperature);
 let city = document.querySelector("#city");
 city.innerHTML = response.data.name;
 let descriptionM = document.querySelector("#description");
@@ -29,10 +29,12 @@ let currentDate = document.querySelector("#currentDate");
 currentDate.innerHTML= formatDate(response.data.dt * 1000);
 let mainIcon = document.querySelector("#mainIcon");
 mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+celsiousTemperature = response.data.main.temp;
 }
 
 
-//search form
+//search engine
 function search(city) {
 let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -45,7 +47,21 @@ function handleSubmit(event) {
     let searchBar = document.querySelector("#searchBar");
     search(searchBar.value);
 }
-search("Bratislava");
 
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
+
+//unit conversion to fahrenheit
+
+function displayFTemperature(event) {
+    event.preventDefault();
+    let fahrenheitTemp = (8 * 9/5 +32);
+    let temperatureElement = document.querySelector("#mainTemp");
+    temperatureElement.innerHTML = Math.round(fahrenheitTemp);  
+}
+let celsiousTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFTemperature);
+
+search("Bratislava");
