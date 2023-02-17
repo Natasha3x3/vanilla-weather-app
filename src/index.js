@@ -13,9 +13,6 @@ function formatDate(timestamp) {
  return `Last updated: ${day} ${hours}:${minutes}`;   
 }
 
-let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
-let city = "Bratislava";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 function displayTemperature(response) {
 let currentTemperature = document.querySelector("#mainTemp");
@@ -32,8 +29,23 @@ let currentDate = document.querySelector("#currentDate");
 currentDate.innerHTML= formatDate(response.data.dt * 1000);
 let mainIcon = document.querySelector("#mainIcon");
 mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-
 }
 
 
+//search form
+function search(city) {
+let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
 axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    let searchBar = document.querySelector("#searchBar");
+    search(searchBar.value);
+}
+search("Bratislava");
+
+let form = document.querySelector("#searchForm");
+form.addEventListener("submit", handleSubmit);
