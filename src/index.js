@@ -13,8 +13,9 @@ function formatDate(timestamp) {
  return `Last updated: ${day} ${hours}:${minutes}`;   
 }
 
-let apiKey = "f3fcd99b4efc8a3098994617c9de63f0";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Bratislava&appid=${apiKey}&units=metric`;
+let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
+let city = "Bratislava";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 function displayTemperature(response) {
 let currentTemperature = document.querySelector("#mainTemp");
@@ -29,6 +30,8 @@ let wind = document.querySelector("#wind");
 wind.innerHTML = `Wind speed: ${Math.round(response.data.wind.speed)} km/h`;
 let currentDate = document.querySelector("#currentDate");
 currentDate.innerHTML= formatDate(response.data.dt * 1000);
+let mainIcon = document.querySelector("#mainIcon");
+mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
 }
 
