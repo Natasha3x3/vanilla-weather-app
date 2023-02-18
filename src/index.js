@@ -64,4 +64,13 @@ let celsiousTemperature = null;
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFTemperature);
 
+//conversion to celsius
+function displayCelsiusTemperature(event) {
+    event.preventDefault();
+    let temperatureElement = document.querySelector("#mainTemp");
+    temperatureElement.innerHTML = Math.round(celsiousTemperature);
+}
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 search("Bratislava");
