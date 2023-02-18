@@ -23,7 +23,7 @@
             <input type="search" class="form-control" id="searchBar" placeholder="Search for a city" autocomplete="off">
  
             <input type="submit" class="button search-button" id="searchButton" value="Search">
-            <input type="submit" class="button location-button" id="searchButtono" value="Here📍">
+            <input type="submit" class="button location-button" id="locationButton" value="Here📍">
           
         </form>
         <h1 id="city"></h1>
@@ -31,8 +31,8 @@
             <div class="col-6">
                 <div class="d-flex current-temperature">
                 <img src="" class="main-icon" id="mainIcon" alt="Clear" height="70px" width="70px">
-                <span class="main-temp" id="mainTemp">12</span>
-                <span class="main-units"><a href="#" id="celsius">°C</a> | <a href="#" id="fahrenheit">°F</a></span>
+                <span class="main-temp" id="mainTemp"></span>
+                <span class="main-units"><a href="#" class="active" id="celsius">°C</a> | <a href="#" id="fahrenheit">°F</a></span>
                 </div>
                 <div class="current-date" id="currentDate"></div> 
                 <div class="description" id="description"></div>

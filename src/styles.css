@@ -19,7 +19,8 @@ a {
     border: 1px rgba(128, 128, 128, 0.619) solid;
     border-radius: 5px;
     padding: 15px;
-    background-color: #CAF7FF;
+    background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
+    box-shadow: 4px 4px 28px rgba(128, 128, 128, 0.242);
 }
 .button {
 display: inline-block;
@@ -27,7 +28,7 @@ margin-left: 10px;
 padding: 4px 5px;
 border: 1px solid gray;
 border-radius: 5px;
-color: rgba(255, 255, 255, 0.822);
+color: white;
 background-color: #507D95;
 
 }
@@ -43,6 +44,7 @@ background-color: #507D95;
 .form-control {
     max-width: 300px;
     display: inline-block;
+    color: #507D95;
 }
 .main-temp {
     line-height: 69px;
@@ -55,7 +57,7 @@ background-color: #507D95;
 .current-date,
 .description,
 .prec-hum-wind {
-    opacity: 0.8;
+    color:#004E71;
 }
 .current-day-time {
     margin-top: 3px;
@@ -65,3 +67,11 @@ background-color: #507D95;
 .col-6-2 {
     padding: 13px 12px;
 }
+.main-units .active {
+    color: black;
+    cursor: default;
+}
+.main-units .active:hover {
+    text-decoration: none;
+}
+

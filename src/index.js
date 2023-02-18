@@ -2,21 +2,24 @@ function formatDate(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
     if (hours < 10) {
-        `0${hours}`
+        hours =`0${hours}`;
     }
     let minutes = date.getMinutes();
     if (minutes < 10) {
-        `0${minutes}`
+       minutes=  `0${minutes}`;
     }
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let day = days[date.getDay()];
  return `Last updated: ${day} ${hours}:${minutes}`;   
 }
 
+let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 function displayTemperature(response) {
+
 let currentTemperature = document.querySelector("#mainTemp");
-currentTemperature.innerHTML =Math.round(celsiousTemperature);
+currentTemperature.innerHTML =Math.round(response.data.main.temp);
 let city = document.querySelector("#city");
 city.innerHTML = response.data.name;
 let descriptionM = document.querySelector("#description");
@@ -30,7 +33,7 @@ currentDate.innerHTML= formatDate(response.data.dt * 1000);
 let mainIcon = document.querySelector("#mainIcon");
 mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
-celsiousTemperature = response.data.main.temp;
+CelsiusTemperature = response.data.main.temp;
 }
 
 
@@ -52,14 +55,15 @@ let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
 
 //unit conversion to fahrenheit
-
 function displayFTemperature(event) {
     event.preventDefault();
-    let fahrenheitTemp = (8 * 9/5 +32);
+    let fahrenheitTemp = (CelsiusTemperature * 9/5 +32);
     let temperatureElement = document.querySelector("#mainTemp");
-    temperatureElement.innerHTML = Math.round(fahrenheitTemp);  
+    temperatureElement.innerHTML = Math.round(fahrenheitTemp); 
+    
+    celsiusLink .classList.remove("active");
+    fahrenheitLink.classList.add("active");
 }
-let celsiousTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFTemperature);
@@ -68,9 +72,15 @@ fahrenheitLink.addEventListener("click", displayFTemperature);
 function displayCelsiusTemperature(event) {
     event.preventDefault();
     let temperatureElement = document.querySelector("#mainTemp");
-    temperatureElement.innerHTML = Math.round(celsiousTemperature);
+    temperatureElement.innerHTML = Math.round(CelsiusTemperature);
+
+    fahrenheitLink.classList.remove("active");
+    celsiusLink.classList.add("active");
 }
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let CelsiusTemperature = null;
+
 search("Bratislava");
