@@ -1,3 +1,6 @@
+let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
 function formatDate(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
@@ -12,9 +15,6 @@ function formatDate(timestamp) {
     let day = days[date.getDay()];
  return `Last updated: ${day} ${hours}:${minutes}`;   
 }
-
-let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 function displayTemperature(response) {
 
@@ -35,7 +35,6 @@ mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.w
 
 CelsiusTemperature = response.data.main.temp;
 }
-
 
 //search engine
 function search(city) {
@@ -82,5 +81,22 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let CelsiusTemperature = null;
+
+//Current location
+function getLocation(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(displayTemperature);
+} 
+function showLocationTemp(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(getLocation);
+}
+
+let locationButton = document.querySelector("#locationButton");
+locationButton.addEventListener("click", showLocationTemp);
 
 search("Bratislava");
