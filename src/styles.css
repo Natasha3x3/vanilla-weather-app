@@ -11,6 +11,9 @@ h1 {
 a {
     text-decoration: none;
 }
+hr {
+    margin: 15px 0;
+}
 .wrapper {
     margin: 100px auto;
     max-width: 500px;
@@ -64,7 +67,7 @@ background-color: #507D95;
     position: relative;
     bottom: -3px;
 }
-.col-6-2 {
+.col-5-2 {
     padding: 13px 12px;
 }
 .main-units .active {
@@ -73,5 +76,16 @@ background-color: #507D95;
 }
 .main-units .active:hover {
     text-decoration: none;
+}
+
+.weather-forecast {
+    text-align: center;
+}
+.future-day {
+    font-size: 15px;
+
+}
+.future-min-temperature {
+    color:#004E71;
 }
 
