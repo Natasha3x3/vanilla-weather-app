@@ -99,4 +99,30 @@ function showLocationTemp(event) {
 let locationButton = document.querySelector("#locationButton");
 locationButton.addEventListener("click", showLocationTemp);
 
+//future forecast
+
+function displayForecast() {
+    let forecast = document.querySelector("#weatherForecast");
+
+    let forecastHTML = `<div class ="row">`;
+    let days = ["Saturday", "Sunday", "Monday", "Tuesday"];
+    days.forEach(function(day) {
+        forecastHTML = forecastHTML +  `
+            <div class="col-3">
+                <div class="future-day" id="">${day}</div>
+                <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="tommorow-weather-icon" width="50px" height="50px">
+                <div class="forecast-temperature">
+                    <span class="future-max-temperature">6°</span> |
+                    <span class="future-min-temperature">8°</span>                    
+
+                </div>
+            </div>
+            `;
+    });
+
+        forecastHTML = forecastHTML + `</div>`;
+        forecast.innerHTML = forecastHTML;
+}
+
 search("Bratislava");
+displayForecast();
