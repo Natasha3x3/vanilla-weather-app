@@ -1,5 +1,5 @@
-let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let apiKey = "198cbo4efb3541a38t7c0636c984243a";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
 function formatDate(timestamp) {
     let date = new Date(timestamp);
@@ -16,30 +16,39 @@ function formatDate(timestamp) {
  return `Last updated: ${day} ${hours}:${minutes}`;   
 }
 
+function getForecast(coordinates) {
+    let apiKey = "198cbo4efb3541a38t7c0636c984243a";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(displayForecast);
+}
 function displayTemperature(response) {
 
 let currentTemperature = document.querySelector("#mainTemp");
-currentTemperature.innerHTML =Math.round(response.data.main.temp);
 let city = document.querySelector("#city");
-city.innerHTML = response.data.name;
 let descriptionM = document.querySelector("#description");
-descriptionM.innerHTML = response.data.weather[0].main;
 let humidity = document.querySelector("#humidity");
-humidity.innerHTML =`Humidity: ${response.data.main.humidity}%`;
 let wind = document.querySelector("#wind");
-wind.innerHTML = `Wind speed: ${Math.round(response.data.wind.speed)} km/h`;
 let currentDate = document.querySelector("#currentDate");
-currentDate.innerHTML= formatDate(response.data.dt * 1000);
 let mainIcon = document.querySelector("#mainIcon");
-mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
-CelsiusTemperature = response.data.main.temp;
+currentTemperature.innerHTML =Math.round(response.data.temperature.current);
+city.innerHTML = response.data.city;
+descriptionM.innerHTML = response.data.condition.description;
+humidity.innerHTML =`Humidity: ${response.data.temperature.humidity}%`;
+wind.innerHTML = `Wind speed: ${Math.round(response.data.wind.speed)} km/h`;
+currentDate.innerHTML= formatDate(response.data.time * 1000);
+mainIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+
+CelsiusTemperature = response.data.temperature.current;
+
+getForecast(response.data);
 }
 
 //search engine
 function search(city) {
-let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let apiKey = "198cbo4efb3541a38t7c0636c984243a";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
 }
@@ -84,10 +93,8 @@ let CelsiusTemperature = null;
 
 //Current location
 function getLocation(position) {
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-    let apiKey = "fcdf4a4bded49166e940dd974c8ecadb";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    let apiKey = "198cbo4efb3541a38t7c0636c984243a";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(displayTemperature);
 } 
@@ -101,7 +108,8 @@ locationButton.addEventListener("click", showLocationTemp);
 
 //future forecast
 
-function displayForecast() {
+function displayForecast(response) {
+    console.log(response.data);
     let forecast = document.querySelector("#weatherForecast");
 
     let forecastHTML = `<div class ="row">`;
@@ -114,15 +122,12 @@ function displayForecast() {
                 <div class="forecast-temperature">
                     <span class="future-max-temperature">6°</span> |
                     <span class="future-min-temperature">8°</span>                    
-
                 </div>
             </div>
             `;
     });
-
         forecastHTML = forecastHTML + `</div>`;
         forecast.innerHTML = forecastHTML;
 }
 
 search("Bratislava");
-displayForecast();

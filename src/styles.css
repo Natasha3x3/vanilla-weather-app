@@ -62,6 +62,9 @@ background-color: #507D95;
 .prec-hum-wind {
     color:#004E71;
 }
+.description::first-letter {
+    text-transform: capitalize;
+}
 .current-day-time {
     margin-top: 3px;
     position: relative;
