@@ -15,13 +15,15 @@ function formatDate(timestamp) {
     let day = days[date.getDay()];
  return `Last updated: ${day} ${hours}:${minutes}`;   
 }
+function formatDay(timestamp) {
+    let date = new Date(timestamp*1000);
+    let day = date.getDay();
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-function getForecast(coordinates) {
-    let apiKey = "198cbo4efb3541a38t7c0636c984243a";
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
-    console.log(apiUrl);
-    axios.get(apiUrl).then(displayForecast);
+    return days[day];
+
 }
+
 function displayTemperature(response) {
 
 let currentTemperature = document.querySelector("#mainTemp");
@@ -42,7 +44,7 @@ mainIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weathe
 
 CelsiusTemperature = response.data.temperature.current;
 
-getForecast(response.data);
+getForecast(response.data.coordinates);
 }
 
 //search engine
@@ -109,25 +111,33 @@ locationButton.addEventListener("click", showLocationTemp);
 //future forecast
 
 function displayForecast(response) {
-    console.log(response.data);
-    let forecast = document.querySelector("#weatherForecast");
+    let forecast = response.data.daily;
+    let forecastElement = document.querySelector("#weatherForecast");
 
     let forecastHTML = `<div class ="row">`;
-    let days = ["Saturday", "Sunday", "Monday", "Tuesday"];
-    days.forEach(function(day) {
+
+    forecast.forEach(function (forecastDay, index) {
+        if (index < 4) {
         forecastHTML = forecastHTML +  `
             <div class="col-3">
-                <div class="future-day" id="">${day}</div>
-                <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="tommorow-weather-icon" width="50px" height="50px">
+                <div class="future-day">${formatDay(forecastDay.time)}</div>
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="tommorow-weather-icon" width="50px" height="50px">
                 <div class="forecast-temperature">
-                    <span class="future-max-temperature">6°</span> |
-                    <span class="future-min-temperature">8°</span>                    
+                    <span class="future-max-temperature">${Math.round(forecastDay.temperature.maximum)}°</span> |
+                    <span class="future-min-temperature">${Math.round(forecastDay.temperature.minimum)}°</span>                    
                 </div>
             </div>
             `;
-    });
+    }});
         forecastHTML = forecastHTML + `</div>`;
-        forecast.innerHTML = forecastHTML;
+        forecastElement.innerHTML = forecastHTML;
 }
 
+
+function getForecast(coordinates) {
+    let apiKey = "198cbo4efb3541a38t7c0636c984243a";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(displayForecast);
+}
 search("Bratislava");

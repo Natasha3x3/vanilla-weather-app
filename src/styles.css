@@ -24,20 +24,22 @@ hr {
     padding: 15px;
     background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
     box-shadow: 4px 4px 28px rgba(128, 128, 128, 0.242);
+    background: linear-gradient(0deg, rgb(0, 227, 200) 36%, rgb(180, 252, 242) 87%);
 }
 .button {
 display: inline-block;
 margin-left: 10px;
 padding: 4px 5px;
-border: 1px solid gray;
+border: 1px solid ;
 border-radius: 5px;
-color: white;
-background-color: #507D95;
+color: #3a3947;
+background-color: #F0BA1C;
 
 }
 .button:hover {
-    background-color: #004E71;
+    background-color: #504980;
     color: white;
+    border-color: #504980;
     transition: all ease-in-out 200ms;
 }
 .search-button {
@@ -60,7 +62,7 @@ background-color: #507D95;
 .current-date,
 .description,
 .prec-hum-wind {
-    color:#004E71;
+    color:#244b61cf;
 }
 .description::first-letter {
     text-transform: capitalize;
