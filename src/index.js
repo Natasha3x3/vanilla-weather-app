@@ -123,7 +123,7 @@ function displayForecast(response) {
                 <div class="future-day">${formatDay(forecastDay.time)}</div>
                 <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="tommorow-weather-icon" width="50px" height="50px">
                 <div class="forecast-temperature">
-                    <span class="future-max-temperature">${Math.round(forecastDay.temperature.maximum)}°</span> |
+                    <span class="future-max-temperature"><strong>${Math.round(forecastDay.temperature.maximum)}°</strong></span> |
                     <span class="future-min-temperature">${Math.round(forecastDay.temperature.minimum)}°</span>                    
                 </div>
             </div>

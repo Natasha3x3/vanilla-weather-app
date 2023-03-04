@@ -19,7 +19,7 @@ hr {
     max-width: 500px;
 }
 .weather-app {
-    border: 1px rgba(128, 128, 128, 0.619) solid;
+    border: 1px rgb(109 174 169 / 42%) solid;
     border-radius: 5px;
     padding: 15px;
     background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
@@ -30,7 +30,7 @@ hr {
 display: inline-block;
 margin-left: 10px;
 padding: 4px 5px;
-border: 1px solid ;
+border: 1px solid #F0BA1C ;
 border-radius: 5px;
 color: #3a3947;
 background-color: #F0BA1C;
@@ -62,7 +62,7 @@ background-color: #F0BA1C;
 .current-date,
 .description,
 .prec-hum-wind {
-    color:#244b61cf;
+    color:#373253cb;
 }
 .description::first-letter {
     text-transform: capitalize;
@@ -91,6 +91,7 @@ background-color: #F0BA1C;
 
 }
 .future-min-temperature {
-    color:#004E71;
+    color:black;
 }
+
 
